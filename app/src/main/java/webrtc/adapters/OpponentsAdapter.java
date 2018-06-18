@@ -48,12 +48,12 @@ public class OpponentsAdapter extends BaseSelectableListAdapter<QBUser> {
 
             if (selectedItems.contains(user)){
                 convertView.setBackgroundResource(R.color.background_color_selected_user_item);
-                holder.opponentIcon.setBackgroundDrawable(
-                        UiUtils.getColoredCircleDrawable(ResourceUtils.getColor(R.color.icon_background_color_selected_user)));
+//                holder.opponentIcon.setBackgroundDrawable(
+//                        UiUtils.getColoredCircleDrawable(ResourceUtils.getColor(R.color.icon_background_color_selected_user)));
                 holder.opponentIcon.setImageResource(R.drawable.ic_checkmark);
             } else {
                 convertView.setBackgroundResource(R.color.background_color_normal_user_item);
-                holder.opponentIcon.setBackgroundDrawable(UiUtils.getColorCircleDrawable(user.getId()));
+//                holder.opponentIcon.setBackgroundDrawable(UiUtils.getColorCircleDrawable(user.getId()));
                 holder.opponentIcon.setImageResource(R.drawable.ic_person);
             }
         }

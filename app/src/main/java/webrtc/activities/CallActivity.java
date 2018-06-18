@@ -188,6 +188,8 @@ public class CallActivity extends BaseActivity implements QBRTCClientSessionCall
             addIncomeCallFragment();
             checkPermission();
         } else {
+            checkPermission();
+            startLoadAbsentUsers();
             addConversationFragment(isInComingCall);
         }
     }

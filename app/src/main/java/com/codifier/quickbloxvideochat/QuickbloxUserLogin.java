@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.quickblox.core.QBEntityCallback;
 import com.quickblox.core.QBEntityCallbackImpl;
@@ -18,6 +19,7 @@ import core.utils.SharedPrefsHelper;
 import core.utils.Toaster;
 import webrtc.activities.BaseActivity;
 import webrtc.activities.OpponentsActivity;
+import webrtc.fragments.QuickbloxIdListener;
 import webrtc.services.CallService;
 import webrtc.utils.Consts;
 import webrtc.utils.UsersUtils;
@@ -31,10 +33,16 @@ import webrtc.utils.UsersUtils;
 public class QuickbloxUserLogin extends BaseActivity {
 
     private QBUser userForSave;
+    private QuickbloxIdListener quickbloxIdListener;
 
     public static void start(Context context) {
         Intent intent = new Intent(context, QuickbloxUserLogin.class);
         context.startActivity(intent);
+    }
+
+    public QuickbloxUserLogin(QuickbloxIdListener quickbloxIdListener) {
+        super();
+        this.quickbloxIdListener = quickbloxIdListener;
     }
 
     @Override
@@ -104,7 +112,8 @@ public class QuickbloxUserLogin extends BaseActivity {
                     removeAllUserData(result);
                 } else {
                     startOpponentsActivity();
-                    Toaster.longToast("User Signedin");
+                    quickbloxIdListener.sendQuickBloxId(user.getId());
+//                    Toaster.longToast("User Signedin");
                 }
                 System.out.println("QuickbloxUserLogin.onSuccess");
             }
@@ -150,7 +159,7 @@ public class QuickbloxUserLogin extends BaseActivity {
     }
 
     private QBUser createUserWithEnteredData() {
-        return createQBUserWithCurrentData("Codifier2",
+        return createQBUserWithCurrentData("Codifier1",
                 "deeepankdwivedi");
     }
 

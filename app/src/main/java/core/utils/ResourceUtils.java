@@ -7,6 +7,8 @@ import android.support.annotation.DimenRes;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.StringRes;
 
+import com.codifier.quickbloxvideochat.QuickbloxApplication;
+
 import core.CoreApp;
 
 
@@ -17,7 +19,7 @@ public class ResourceUtils {
     }
 
     public static Drawable getDrawable(@DrawableRes int drawableId) {
-        return CoreApp.getInstance().getResources().getDrawable(drawableId);
+        return QuickbloxApplication.getInstance().getResources().getDrawable(drawableId);
     }
 
     public static int getColor(@ColorRes int colorId) {
